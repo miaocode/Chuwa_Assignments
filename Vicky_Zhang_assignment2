@@ -1,0 +1,76 @@
+//#1.1
+const itemsObject = [
+  { quantity: 1, price: 200 },
+  { quantity: 3, price: 350 },
+  { quantity: 5, price: 400 },
+];
+
+function doubleObjVal(items) {
+  return items.map((obj) => ({
+    quantity: obj.quantity * 2,
+    price: obj.price * 2,
+  }));
+}
+
+function doubleObjVal(items) {
+  const result = [];
+  for (let i = 0; i < items.length; i++) {
+    result[i] = {
+      quantity: items[i].quantity * 2,
+      price: items[i].price * 2,
+    };
+  }
+  return result;
+}
+
+//#1.2
+function greaterThan(items) {
+  return items.filter((obj) => obj.quantity > 2 && obj.price > 300);
+}
+//#1.3
+function totalVal(items) {
+  return items.reduce((pre, cur) => {
+    return pre + cur.quantity * cur.price;
+  }, 0);
+}
+
+//#2
+const string =
+  " Perhaps The Easiest-to-understand   Case   For Reduce Is   To Return The Sum Of  All The Elements In  An Array  ";
+
+function removeSpace(string) {
+  return string
+    .replace(/\s{2,}/g, " ")
+    .trim()
+    .trimEnd()
+    .toLowerCase();
+}
+
+//3
+
+const first = [
+  { uuid: 2, name: "test" },
+  { uuid: 5, name: "test5" },
+  { uuid: 3, name: "test3" },
+];
+const second = [
+  { uuid: 6, role: "pm" },
+  { uuid: 4, role: "engineer" },
+  { uuid: 1, role: "manager" },
+  { uuid: 2, role: "associate" },
+];
+
+function mergeArries(arr1, arr2) {
+  arr1.map((el1) => ({
+    ...el1,
+    ...arr2.find((el2) => el2.uuid === el1.uuid),
+  }));
+
+  const newArr = arr1.concat(arr2);
+
+  newArr.map(
+    (el) => ((el.name = el.name || null), (el.role = el.role || null))
+  );
+
+  newArr.sort((a, b) => a.uuid - b.uuid);
+}
