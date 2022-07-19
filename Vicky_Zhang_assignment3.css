@@ -1,0 +1,20 @@
+body {
+  margin: 50px 100px;
+}
+/* table */
+#users,
+td,
+th {
+  border: 2px solid gray;
+  text-align: center;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+#users tr:nth-child(even) {
+  background-color: lightgray;
+}
+
+#users tr:hover {
+  background-color: lightblue;
+}
