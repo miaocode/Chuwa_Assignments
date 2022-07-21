@@ -43,20 +43,22 @@ tableDiv.appendChild(userTable);
 let createTable = function (header, content) {
   let tr = document.createElement("tr");
   userTable.appendChild(tr);
-  header.map((h) => {
+  let headerArr = header.map((h) => {
     let thead = document.createElement("th");
     thead.textContent = h;
-    tr.appendChild(thead);
+    return thead;
   });
+   tr.append(...headerArr);
 
-  content.map((c) => {
+  content.forEach((c) => {
     let tr = document.createElement("tr");
     userTable.appendChild(tr);
-    Object.values(c).map((user) => {
+    let contentArr = Object.values(c).map((user) => {
       let td = document.createElement("td");
       td.textContent = user;
-      tr.appendChild(td);
+      return td;
     });
+    tr.append(...contentArr);
   });
 };
 createTable(tableInfo.tableHeader, tableInfo.tableContent);
@@ -75,11 +77,12 @@ listsDiv.appendChild(unorderedLi);
 
 //auto generate the list with a function
 let generateLi = function (list, appendTo) {
-  list.map((el) => {
+  let listArr = list.map((el) => {
     let li = document.createElement("li");
     li.textContent = el;
-    appendTo.appendChild(li);
+    return li
   });
+  appendTo.append(...listArr);
 };
 
 const list = ["HTML", "JavaScript", "CSS", "React", "Redux", "Java"];
@@ -107,9 +110,10 @@ dropdownList.appendChild(dropdownText);
 dropdownList.appendChild(dropdown);
 
 //using a functon to auto generate the dropdown list
-dropDownList.map((city) => {
+let dropdownArr = dropDownList.map((city) => {
   let option = document.createElement("option");
   option.value = city.value;
   option.textContent = city.content;
-  dropdown.appendChild(option);
+  return option;
 });
+dropdown.append(...option);
